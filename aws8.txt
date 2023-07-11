@@ -1,0 +1,45 @@
+AWS Launch Template
+====================
+To create a linux server we need to do lots of configurations and multiple clicks then our sever will be ready. 
+
+To overcome this limitation we need to use lauch template. 
+
+Using launch template we can create a server in just one click.
+
+Launch Template is like .
+
+> It contains the configuration information to launch an instance.
+
+> Just with in a single click we can create the server.
+
+
+Naming standards for creating servers
+-------------------------------------
+It is highly recommanded to follow naming standards to create a server in aws.
+
+Just by looking at the server we should know following things.
+
+	> What application is running on it.
+		ex:	
+			payment, user, catalog, cart and etc.
+
+	> What environment it is.
+		ex:
+			Dev, QA , Pre-Production, Production.
+
+	> Owner or Location of it.	
+		ex:
+			Diagram: aws8.1	
+
+ex:
+	payment-dev-l01	
+	cart-qa-l02
+	catalog-prod-l03
+
+
+Diagrams: 
+
+
+
+
+
