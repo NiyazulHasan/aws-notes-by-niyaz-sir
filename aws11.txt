@@ -1,0 +1,92 @@
+EBS : Elastic Block Storage or EBS volumes 
+=============================================
+EBS stands for Elastic Block Store.
+
+EC2 is a virtual server in a cloud while EBS is a virtual disk in a cloud.
+
+Amazon EBS allows you to create storage volumes and attach them to the EC2 instances.
+
+Diagram: aws11.1
+
+Amazon EBS volumes are placed in a specific availability zone.
+
+Once the storage volume is created, you can create a file system on the top of these volumes, and then you can run a database, store the files, applications and etc.
+
+As a part of free-tier we can use upto 30gb disk is free.
+ex:
+	https://aws.amazon.com/free/
+
+Whenever we create a EC2 Instance , by default 5gb of EBS volumes will be allocated.
+
+
+Steps to add EBS volumes to launch template
+------------------------------------------------
+step1:
+------
+	create a launch template i.e My-Spot-Server.
+	ex:
+		Diagram: aws11.2
+step2:
+-----
+	Connect to server and type below command in xShell.
+	ex:
+		$  df -h 
+		$  lsblk
+
+	        Diagram: aws11.3
+
+step3:
+-----
+	Create EBS volumes to Launch template.
+
+	Diagrams: 
+
+step4:
+------
+	Now attach EBS volumes to EC2 Instance.
+
+	Diagrams:
+
+step5:
+------
+	Type below command to check number of disk allocated to server in xShell.
+	ex:
+		$ lsblk
+		or
+		$ fdisk
+		
+	
+Note:
+-----
+Everything is software driven, automation.
+
+Earlier whatever the storage team does. The same thing can be done by script.That is a extension of automation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    
+ 

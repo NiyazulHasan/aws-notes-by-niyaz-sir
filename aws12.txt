@@ -1,0 +1,415 @@
+touch 
+--------
+A touch is a common Linux command to make an empty file or modify the file timestamps (file access time, last date, or modification).
+
+ex:
+	$ touch a.txt
+	$ touch b.txt
+    	$ touch c.txt 
+	$ touch d.xlsx
+	$ touch batch54.txt
+	
+	We can also create multiple files at a time.
+	ex:
+		$ touch x.log y.log z.log 
+
+ls
+------
+A ls command is used to display list of files and directories. 
+ex:
+	$ ls 
+
+
+rm 
+-----
+A rm command is used to remove the files and directories.
+ex:
+	$ rm a.txt 
+	$ rm x.log 
+	$ ls 
+
+mv
+------
+A mv command is a useful tool for renaming directories and files.
+ex:
+	$ mv batch54.txt aws-devops.txt
+	$ ls 
+
+pwd
+-----
+pwd stands for present working directory.
+
+A pwd command prints the current working directory path starting from the root ( / ).
+ex:
+	$ pwd
+
+clear
+--------
+A clear command is used to clear the terminal.
+ex:
+	$ clear 
+
+	or 
+
+	press ctrl + l
+
+mkdir
+-------
+A mkdir command in Linux allows the user to create directories.
+ex:
+	$ mkdir payment
+	$ ls 
+
+
+ls -ltr
+------
+A ls- ltr command is used to display all the files in vertical format.
+
+l stands for long list format
+
+t stands for timestamp
+
+r stands for recursive format (which created last it will show at bottom/last).
+
+ex:
+	$ ls -ltr 
+	$ man ls 
+
+cd 
+----
+A cd command is used to change the directory.
+
+ex:
+	$ pwd   (default centos is a directory)
+	$ cd payment 
+	$ pwd
+	$ touch payment-app.log subscribed-students.txt payment-mail.log
+	$ ls -ltr 
+
+Note:
+------
+	.. indicates "Go One Directory Back".
+	.  indicates "Present Working Directory".
+
+	ex:
+		$ pwd (we are now in payment directory)
+		$ cd .. 
+		$ pwd (we are now in centos directory)
+		$ cd payment/
+		$ pwd (we are now in payment directory)
+
+cp
+-----
+A cp command is used to copy a file from one directory to another directory.
+ex:
+	$ cd .. (we are now in centos directory)
+	$ touch payment-owner.txt
+	$ pwd 
+	$ ls -ltr 
+	$ cp payment-owner.txt payment/
+	$ cd payment/ (switch to payment directory)
+	$ cd pwd 
+	$ ls -ltr 
+
+date
+----
+A date command displays the current date and time.
+ex:
+	$ date 
+
+
+alias
+------
+A alias command instructs the shell to replace one string with another string while executing the commands.
+e:
+	$ alias ltr="ls -ltr"
+	$ ltr 
+
+	Note:
+		Linux is giving free hands to customize.	
+
+
+
+Assume you belongs to a team which develops Payment application
+===============================================================
+Whenever you want to test or install payment application we need to do following things.
+
+1) Create a server. 
+
+2) Install a package (In cloud environment package means software).
+
+3) Create a configuration file. 
+
+4) Update the value from YAHOO to FACEBOOK.
+
+5) Copy the file and paste in "/home/centos/payment/secret.conf".
+
+Do you know what payment team does ?
+
+1) They will create a server and do all the steps from 2 to 5.
+
+2) Make an AMI(Amazon Machine Image) out of it and inform your team to use this 
+   image when they want to test the payment application.
+
+
+Steps to create AMI (Amazon Machine Image)
+============================================
+step1:
+-----
+	Goto existing launch template i.e cart-app-dev or payment-app-dev.
+
+step2:
+------
+	Launch EC2 instance from template.
+
+step3:
+-----
+	Now create AMI.
+
+	Note:
+	------
+	If we enable Reboot then we will get 100% best copy/AMI.
+		 
+
+	
+	Remember : Time taken to AMI is highly dependent on 
+
+	1) Size of the disk
+	2) How big the server is 
+	3) How buzy the system is 
+
+step4:
+-----
+	Now launch the template from AMI.
+	
+
+
+uptime
+-------
+A uptime command is used to show you since when machine is up.
+
+ex:
+	$ uptime 
+
+	Check wheather all the things which we created on payment application
+	is there or not.
+	ex:
+		$ ls -ltr 
+
+
+
+Q) If you server is not coming on AWS , What will you do?
+
+Many people say they will do 
+
+1) Try to check the console logs.
+
+2) I will raise a support call with AWS.
+
+These are under rated options.
+
+We have options for instance screenshot and system logs.
+
+
+
+
+Q) Will AMI creating falls in billing?
+
+Yes, AMI creating falls in billing because it contains disk.
+As we know only 35gb Disk as a free tier.
+
+	
+Q)Is is possible to run multiple servers at a time?
+
+Yes , it is possible to run multiple servers in xshell.
+
+We need to copy public IP address of each server and use in xshell.
+
+
+
+Project Description
+==================
+In our training we will do two projects.
+
+1) Monolithic project (3 servers)
+
+2) Micro-Service project (13 servers)
+
+
+Instana is a company acquired by IBM.
+
+Instana is a company which offers Observability and Monitoring platform.
+
+They have open source project , we are going to do that.
+
+ex:
+	https://gitlab.com/clouddevops-b53/student-project/-/tree/main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
