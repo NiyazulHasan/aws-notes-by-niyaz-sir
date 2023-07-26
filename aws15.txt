@@ -1,0 +1,142 @@
+rm
+-----
+rm stands for remove and it is used to remove files, directories, and links. 
+
+ex:
+	$ ls -ltr
+	$ mkdir batch54
+	$ cd batch54
+	$ touch a.txt b.log c.word d.xlsx 
+	$ ls -ltr
+	$ rm a.txt (delete a file)
+	$ mkdir test-dir (new directory created)
+	$ rm -rf test-dir/  (r- recursive, f- force) 
+
+Note:
+------
+Whenever we delete directory then it will delete the files from that directory.
+
+
+How to edit a file in linux
+==============================
+To edit a file in windows we will use notepad.
+
+But in linux we will use following editors 
+ex:
+	vi, vim, nano, gedit and etc.
+
+vi is a default edit in linux OS.
+
+If we are using lab AMI then vim editor is available bydefault.
+
+syntax:
+	$ vim fileName
+		If file exists it opens the file.
+		If file doesn't exist it create and opens the file.
+
+Diagram: aws15.1
+
+
+ex:
+	$ ls -ltr
+	$ vim sample-file.txt 
+		This is my 5th batch of Devlops with aws training
+	$ ls -ltr 
+
+Note:
+-----
+	$ vim devops.txt (click enter button) --> 
+	
+	Press ESC + i (to insert the data) (ESC : Enter) --> 
+	Now add some data --> 
+	Press ESC : wq! (save and quit).
+
+	Here w means write , q means quit and ! means end.
+
+	$ cat devops.txt 
+
+
+How to search a word in a file
+------------------------------
+$ vim abc.txt 
+
+$ ESC + enter (or) i 
+
+Add the data/content with aws word 
+
+$ ESC : wq!
+
+$ vim abc.txt 
+
+$ ESC /AWS (AWS is a word we are searching in content)
+
+
+How to delete a line in a file
+------------------------------	
+$ vim abc.txt 
+
+$ ESC dd (It is used to delete the lines from file based on cursors location)	
+
+$ ESC : wq! (quit but not save)
+
+$ cat abc.txt 
+
+
+
+How to replace the first occurance of word in a file
+---------------------------------------------------
+$ vim abc.txt 
+
+$ ESC :%s/AWS/AWS-CLOUD/ (enter)
+
+$ vim abc.txt 
+
+
+
+How to replace the all occurance of word in a file
+---------------------------------------------------
+$ vim abc.txt 
+
+$ ESC :%s/AWS/AWS-CLOUD/g (enter)
+
+$ vim abc.txt 
+
+
+
+How to replace the all occurance of word in a file based on cursor position
+-----------------------------------------------------------------------------
+$ vim abc.txt 
+
+$ ESC :s/AWS/AWS-CLOUD/g (enter)
+
+$ vim abc.txt 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
