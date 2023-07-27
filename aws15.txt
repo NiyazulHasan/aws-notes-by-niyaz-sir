@@ -112,6 +112,146 @@ $ ESC :s/AWS/AWS-CLOUD/g (enter)
 $ vim abc.txt 
 
 
+Linux Directory structure
+==========================
+Diagram: aws15.2
+
+A root(/) directory contains all other directories, subdirectories, and files on the system. It is denoted by a forward slash (/). 
+
+A /bin/ directory contains all the commands which are executing.
+ex:
+	$ type cat 
+
+A /boot/ directory contains all the operating system related entries and packages.
+
+A /dev/ directory contains all the devices that are connected to the system.
+
+A /etc/ directory contains all the system configuration related entities.
+
+A /home/ directory contains all the users which are existing in a system.
+ex:
+	/home/centos
+	/home/niyazsir
+
+A /lib/ directory contains the packages which are required for addition softwares.
+	
+A /media/ directory contains DVDROM or CDROM attached to a system. 
+
+A /mnt/ directory contains external devices like pendrive which attached to a system. 
+
+
+How to create hidden files and show hidden files 
+------------------------------------------------------ 
+ex:
+	$ touch .bat54 (. means hidden file)
+
+	$ ls -ltr (It won't show hidden files)
+
+	$ ls -ltra (It shows hidden files )
+
+
+Note:
+------
+In windows, if we want to install any software.
+
+1) We download .exe file or .ISO file and we will run it.
+
+
+In linux, If we want to install any package.
+
+1) We need to use package manager in linux.
+
+package manager helps you in downloading the packages from the internet and install.
+
+ex:
+	yum (Redhat Based Machines)
+	apt (Debian Based Machines)
+
+syntax:
+	# yum install packageName
+
+
+Diagram: aws15.3
+
+> lets install some packages.
+ex:
+	$ yum install nginx
+	  (You Need to be root to perform this command).
+
+	$ sudo yum install nginx
+
+	  sudo is a tool/command to access root privileges temperory.
+
+	$ sudo yum install nginx -y
+
+	  -y means auto approve.
+
+
+Packages in linux can be installed in 3 ways.
+
+1) yum (Preferred:YUM has the advantage of handling all the needed pre-req softwares)
+
+2) rpm(Red-hat Package Manager) : is an open source program for installing,     uninstalling, and managing software packages in Linux. 
+
+3) Source Code Based Installation (Download the code , compile and use it).
+
+
+To see the list of packages installed in our linux machine
+---------------------------------------------------------
+	$ sudo yum list installed
+
+	$ sudo yum list installed | wc -l (It shows number of packages in numbers)
+
+	$ sudo yum list available | wc -l (It shows number of packages available in 
+					 	internet)
+
+	
+How to update the package
+---------------------------
+	$ sudo yum install nginx (To install)
+
+	$ sudo yum update nginx  (To update)
+
+
+How to see the list of packages available along with version
+-------------------------------------------
+	$ sudo yum list available | grap nginx
+
+
+How to remove the package from linux machine
+-------------------------------
+	$ sudo yum remove ngnix -y
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
 
 
 
