@@ -1,0 +1,297 @@
+Q)What is the difference between curl and wget ?
+
+curl						wget
+-------						--------
+Curl has the capability to download the 	wget has the capability only 
+content/file and browse the content/file.       to download the file/content.
+
+
+To browse something from the internet we will use curl.
+
+ex:
+	$ curl https://github.com/NiyazulHasan/aws-notes-by-niyaz-sir/README.md
+
+          (It will browse the file)		 
+
+	$ curl -o  https://github.com/NiyazulHasan/aws-notes-by-niyaz-sir/README.md
+
+	  (It will download the file)
+
+
+To download something from the internet we will use wget.
+ex:
+	$ wget https://github.com/NiyazulHasan/aws-notes-by-niyaz-sir/README.md
+
+	$ ls -ltr 
+
+
+Note:
+-------
+In windows we will use zip file to compress multiple files into single file and later we can unzip.
+
+Similarly , In linux we will use tar to packing multiple files into single file and later we can untar.
+
+In linux , in order to prevent intigrity of the files.
+
+ex:
+
+	Assume I create multiple files and will package then into a single file.
+
+	Diagram: aws16.1
+
+	What if i am given a software by tampering file some files.
+	Here tampering means i updated some files and i gave it to you.
+	In order to prevent tampering of the published software , it is always 
+	recommanded to published the software in compression format or tar format.
+			
+Let see how to download the software in linux
+------------------------------------------------
+step1:
+------
+	Goto apache tomcat server page to download.
+	ex:
+		https://tomcat.apache.org/download-80.cgi
+
+step2:
+-----
+	Copy the link address of a software file.
+	ex:
+		Right click to "tar.gz" file --> copy link address.
+
+step3:
+----
+	Now use wget to download a file.
+	ex:
+	$ wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.91/bin/apache-tomcat-8.5.91.tar.gz
+
+	Note:
+	------
+	Here we will get error/blocker.
+	To overcome this limitation we will use below flag as mention in error.
+
+	$ wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.91/bin/apache-tomcat-8.5.91.tar.gz --no-check-certificate
+
+	$ ls -ltr  (file will be downloaded)
+
+How to extract/unpacking the file
+-----------------------------------
+ex:
+	$ man tar
+	$ tar -xf apache-tomcat-8.5.91.tar.gz
+	$ ls -ltr 
+	$ cd apache-tomcat-8.5.91 (move to directory)
+	$ ls -ltr 
+
+
+
+Linux Pipes (|)
+==============
+Pipe in linux helps to send the output of first command as a input to the second command.
+
+ex:
+	$ cat /etc/passwd | head -n 5 (Reading first five lines from the file)
+
+	$ cat /etc/passwd | tail -n 8 (Reading last 8 lines from the file)
+
+	$ cat /etc/passwd | tail -n 8 | head -n 3 
+	  (Reading last 8 lines from the file then top 3 lines from the file)
+
+	
+Linux grep
+=============
+This is a basic filter in linux.
+ex:
+	$ cat /etc/passwd | grep mail (It display lines having mail word)
+
+	$ cat /etc/passwd | grep centos (It display lines having mail centos)
+	
+	$ cat /etc/passwd | grep root (It display lines having mail root)
+
+		
+Linux Run Levels
+================
+
+Runlevel	Description
+---------	-------------
+0		System halt i.e., the system can be safely powered off 
+		with no activity.
+
+1		Single user mode.
+
+2		Multiple user mode with no NFS (network file system).
+
+3		Multiple user modes under the command line interface and 
+		not under the graphical user interface.
+
+4		User-definable.
+
+5		Multiple user mode under GUI (graphical user interface) and this 
+		is the standard runlevel for most of the LINUX-based systems.
+
+6		Reboot which is used to restart the system.
+
+
+ex:
+	To check the run level we will use below command.
+
+		$ runlevel   (3)
+
+ex:
+	To shutdown the machine we will use below commands.
+	
+		$ sudo shutdown -h now 
+			or
+		$ sudo halt 		
+			or
+		$ sudo init 0
+	       
+ex:
+	To restart the machine we will use below commands.
+
+		$ sudo init 6 	       	
+			or
+		$ sudo reboot 
+			or
+		$ sudo shutdown -r now 	
+
+ex:
+	To verify whether the system is rebooted or not.
+	
+		$ uptime 	
+
+
+Linux process Management 
+=========================
+In windows to see all the processes we will goto task manager.
+
+In linux to see all the processes we will use top.
+
+A "top" is a task manager in linux.
+
+ex:
+	$ top 
+
+	If our server not executing the jobs on time then we will read 
+	top command details like load average , number of zombie and what 
+	is cpu and memeory utilization.	
+
+	or
+
+
+	$ ps 
+	$ man ps 
+	$ ps -ef (It shows all the processes)
+	$ ps -U centos (It shows all the process only for centos user)
+
+
+How to kill the process in linux
+---------------------------------
+syntax:
+
+	$ kill processID
+	$ kill -9 processID (forcefully killed it)
+
+	$ top (It shows the process id)
+	$ kill 991
+	$ kill -9 991
+
+
+Linux User Management 
+=====================
+syntax:
+	$ useradd username
+
+ex:
+	$ useradd mike (it shows permission denied)
+
+	$ sudo useradd mike (It creates the user)
+	$ sudo useradd steve
+	$ sudo useradd peter
+
+	$ id (It shows the details of properties of specific user i.e our details)
+
+	$ id mike (It shows user account exists or not)
+	$ id steve
+	$ id peter
+
+	$ id jose (it shows no such user)
+
+	$ sudo useradd sangeeta
+	$ sudo useradd siri
+	$ sudo useradd swapna 
+	$ id sangeeta 
+	$ id siri
+	$ id swapna 
+	
+	$ cat /etc/passwd (It contains all user account details)
+
+	
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+
