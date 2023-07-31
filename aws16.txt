@@ -184,6 +184,14 @@ ex:
 	$ ps -U centos (It shows all the process only for centos user)
 
 
+Note:
+----
+	Each and every process running in a machine in your linux server will 
+	have process id.
+
+	Each every process that has been developed by a process is called parent 
+	process.It means every process id is called parent process id.
+
 How to kill the process in linux
 ---------------------------------
 syntax:

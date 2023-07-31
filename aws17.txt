@@ -1,0 +1,331 @@
+To check the current user account we need to use below command.
+ex:
+	$ whoami
+
+	
+How to configure the password for the users
+--------------------------------------------
+ex:
+	$ sudo passwd mike 
+
+	  New password : Password 
+
+	$ sudo passwd pete 
+	
+	  New password : Password 
+	  Retype password : Password 
+
+	$ sudo passwd steve
+		
+	  New password : Password 
+	  Retype password : Password 
+
+	$ sudo passwd swapna
+		
+	  New password : Password 
+	  Retype password : Password 
+
+	$ sudo passwd siri
+		
+	  New password : Password 
+	  Retype password : Password 
+
+	$ sudo passwd sangeeta 
+		
+	  New password : Password 
+	  Retype password : Password 
+
+        We can see the properties of perticular user.
+	ex:
+	$ id mike  (ui,gi,groups)
+	$ id swapna 
+
+Note:
+------
+On linux, we can create a maximum of 65535 user accounts.
+ex:
+	0 to 999      (For system user accounts)
+	1000 to 65535 (For custom user accounts)
+
+Ensure, If we take any flavour of linux the very first user account is created is root user and root user id is 0.
+
+Whenever we see /bin/bash for the user then the user has prompt to signin.
+ex:
+	$ cat /etc/passwd 
+
+Whenever user leaving the company , first they will disable the user account and they will wait for 1 week or 2 weeks then they will delete the user account.
+
+Whenever we see /sbin/nologin for the user then the user cannot signin but he can function.
+ex:
+	$ cat /etc/passwd
+
+
+
+Types of accounts in linux
+===========================
+There are three types of accounts.
+
+1) User Accounts
+
+2) Group Accounts
+
+3) Service Accounts (This is meant for machines and applications)
+
+Note:
+----
+Example you are working for my company and you would like to configure an application.That application running under your name.If you are leaving the organization they will delete the account.The moment they delete the account, our application stop working.Hence never recommanded to create a user account with your name.Instead we will create service account.
+
+
+
+
+Linux group account
+=====================
+
+Diagram : aws 17.1
+
+Rather then dealing we dealing with individual permissions.
+
+We are going to create a group account and we will add all the users.
+ 
+Whenever we want to delegate the access of a file , will give access to group.
+
+Note
+-----
+If any user joined in a company we will add that user to group and automatically that user will get all the access.
+
+If any user left the company we will remove that user from group.
+
+If user wants to come from mainframe to devops team after upgrading himself then we 
+will add that user to devops team group.
+
+
+By default , each user will be in his own group.
+ex:
+	1 user can be a part of 1 + 15 groups
+
+	1 is primary group and 15 are secondary groups.
+
+
+To see the list of groups present in linux we will below command.
+ex:
+	$ cat /etc/group
+
+To create a group account we will use below command.
+ex:
+	$ sudo groupadd devops 
+	$ sudo groupadd mainframe 
+	$ cat /etc/group
+	
+Lets add the users to group account.
+ex:
+	$ man usermod 
+
+	$ sudo usermod -a -G devops mike 	
+	  (-a for append not for overriding, -G for lower group)
+	$ id mike
+
+	$ sudo usermod -a -G devops steve 
+	$ id steve
+
+	$ sudo usermod -a -G devops pete  
+	$ id steve  
+
+	$ cat /etc/group (it shows all the users with groups)
+
+
+	$ sudo usermod -a -G mainframe swapna	
+	  (-a for append not for overriding, -G for lower group)
+	$ id swapna
+
+	$ sudo usermod -a -G mainframe siri
+	$ id siri
+
+	$ sudo usermod -a -G mainframe sangeeta
+	$ id sangeeta 
+
+	$ cat /etc/group (it shows all the users with groups)
+
+How to switch from one user account to another user account
+----------------------------------------------------------
+ex:
+	$ su - mike 
+	  password : Password
+
+	$ whoami 
+
+	$ exit  (to exist from account)
+
+	$ sudo su - mike (It won't ask password to switch)
+
+Note:
+-----
+Not everyone in the system can use sudo command.
+ex:
+	$ whoami (mike)
+	
+	$ useradd deepak (permission denied- bcz he is trying to add user)	
+
+	$ sudo useradd deepak 
+		password for mike : Password (msg- this incident will be reported)
+	
+	$ exit 
+
+If any user wants to use or execute sudo commands then he should be a part of 
+SUDOERS.
+
+SUDOERS File
+=============
+If we do some changes and that changes have any syntax or any other issues then it will kill entire system.
+ 
+ex:
+	$ sudo vim /etc/sudoers 
+	   insert : %devops  ALL=(ALL)  ALL 
+
+	$ ESC :wq! (quit)
+
+	$ sudo su - mike 
+
+	$ sudo useradd jacks  (Now mike can use sudo command to add new user)
+		
+		password : Password
+
+	$ id jacks 
+
+	$ exit 
+
+
+How to ristrict the commands to the user
+------------------------------------------
+ex:
+	$ sudo su - mike 
+	$ whoami (mike)
+	$ sudo yum install nginx -y (mike can install or do anything)
+
+	We can ristrict to the user to execute the commands.
+
+	$ type useradd 
+		(user/sbin/useradd)
+
+	$ sudo vim /etc/sudoers (don't try this otherwise u will be in trouble)
+		
+		insert : %devops  ALL=(ALL)  ALL     (They can run any commands)
+		insert : %mainframe ALL=/bin/yum ALL (They can run only yum cmds)
+
+	$ :wq!
+	$ exit 
+
+	$ sudo su - swapna
+	$ whoami
+	$ sudo yum install nginx -y (msg- incident will be reported) 
+	$ exit  
+
+	Here swapna does not permissions to execute the command.
+
+
+Note:
+-----
+	NOPASSWD: ALL  -> It will not ask password for every command.
+
+
+Services In Linux
+====================
+1) How to start a service?
+2) How to stop a service?
+3) How to restart a service?
+	
+syntax:
+	# systemctl start/stop/restart serviceName
+	# systemctl enable serviceName 
+
+nginx 
+-----
+NGINX is open-source web server.
+ex:
+	$ sudo yum install nginx -y 
+
+	$ sudo systemctl status nginx (we check the status)
+	
+             (msg - Active : inactive)
+
+	$ sudo systemctl start nginx (start the service)
+
+	$ sudo systemctl status nginx (we check the status)
+
+	     (msg - Active : active)	
+	
+  	$ sudo init 6 (restart the service - wait for some time to restart)
+
+	$ sudo systemctl status nginx (we check the status)
+
+		(msg - Active : inactive)
+
+	This is the suituation. If server goes to the restart all 
+	the applications are not coming up automatically. That creates big
+	breach and big downtime. 
+	
+	To overcome this limitation we need to tell to operating whenever you 
+	restart please bring all the applications up.
+
+	$ sudo systemctl enable nginx 
+
+	$ sudo systemctl status nginx 
+		(loaded - enabled )
+
+	$ sudo init 6 (restart the server)
+
+	$ sudo systemctl status nginx 
+
+		(Active : active )
+
+Note:
+-----
+	Whenever we start a server or restart a server kindly check the status.	
+
+
+How to see the log files in linux
+==================================
+Linux log files are stored in plain-text and can be found in the /var/log directory and subdirectory.
+
+ex:
+	$ cd  /var/log/
+
+	$ cd /var/log/secure (It is not a directory)
+
+	$ tail -f /var/log/secure 
+	(If user attempt any command without sudo permission we can check here )
+
+
+Let see how our request goes to perticular service
+========================================================
+Each and every service will be configured against a port number.
+
+In networking terminology we save port number is a logical value to a service.
+
+There are 0 to 65534 port numbers available.
+
+0 to 1023 ports are reserved by the system.	
+
+Diagram: aws17.2
+
+ex:
+	$ ip a  (It shows private IP Address)
+		
+
+	$ curl ifconfig.me  (It shows public IP Address)	
+	
+
+	$ hostname (It gives server name)
+
+	$ netstat (It shows all network related statistics)
+	
+	$ netstat -tulpn (t-tcp,u-utp,l-options in list, p-protocol,n-portnumbers)
+
+	$ sudo netstat -tulpn (If we want to know what program running on portno) 
+
+
+
+
+
+
+
+
