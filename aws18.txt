@@ -1,0 +1,92 @@
+Need of Elastic IP Address
+==========================
+Whenever we create a server we will get a public IP address.
+
+Using that public IP , we will connect to the server.
+
+Public IP's are costly.
+
+So we need to pay for it , when you don't use.
+
+Whenever we shutdown the server and start it ,your public IP will change but not private IP.
+
+Diagram: aws18.1
+
+We efficiently uses IP Address.
+
+You know Amazon is given the IP addresses by paying .In order to use it efficiently Amazon is taking it back.
+
+In companies things will not work in that way.
+ex:
+	For example , you have a server and you published the IP address to everyone.
+	It should not be the case every time you shutdown the server .You get 
+	new IP address and you update the team by saying hey this is new IP Address.
+	You don't do that right?
+
+	In order to address this , we have a concept called Elastic IP Address
+	in AWS.
+
+
+Elastic IP Address
+==================
+An Elastic IP address is a reserved public IP address that you can assign to any EC2 instance in a particular region, until you choose to release it.
+
+> We will check-in(buy) the elastic IP.
+
+> We will assign this eip to EC2.
+
+> Lets stop and start EC2
+
+> The Elastic IP remains same.
+
+Diagrams:
+
+Note:
+------
+1) Elastic IP's are costly.
+
+2) How billing works for elastic ip's?
+
+> you have taken elastic IP,you have allocated to your server and server is up 
+  then No Billing.
+
+> you have taken elastic IP, you have not allocated to any server then Billing.
+
+> you have taken elastic IP, you have allocated to server and server is not up then
+  Billing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
