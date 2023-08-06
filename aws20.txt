@@ -1,0 +1,241 @@
+First Project Development in AWS
+==================================
+To develop this project we required following servers.
+
+1)FrontEnd Server/Web Server (It is a public server)
+
+2)Application Server /BackEnd Server
+
+3)Database Server
+
+Diagram: aws20.1
+
+step1:
+-----
+	create a security group by using below name.
+	ex:
+		b54-allow-all
+
+	Diagrams: 
+
+step2:
+------
+	Create a launch template by using below name.
+	ex:
+		b54-LabImage-Spot
+
+	Diagrams: 
+
+
+	Note:
+	----
+	FrontEnd Server : 
+
+	It is also known as web server.
+	It is developed by frontend team.
+	We use following technologies.
+	ex:
+		Angular, React , Vue , Ember & etc - for web development.
+		Flutter, React Native, Andriod , Swift & etc- for mobile development.
+
+	Backend Server :
+	
+	It is also known as application server.
+	It is developed by backend team.
+	We use following technologies.
+	ex:
+		Java, Python, Golang, NodeJS, ExpressJS and etc. 
+	
+	Database Server : 
+
+	It is developed by DB team.
+	We use following technologies.
+	ex:
+		MySQL, Oracle, MongoDB , NoSQL, MariaDB and etc.
+		    	
+step3:
+-----
+	Launch three Instances/Servers from launch template.
+	
+	Diagrams:
+
+step4:
+-----
+	Connect to the FrontEnd server.
+	ex:
+		centos/DevOps321 
+					
+step5:
+-----
+	Set the hostname to the server to identify.
+	ex:
+		$ sudo set-hostname frontend (It is customized command)
+
+
+step6:
+-----
+
+	If you have any issue during the practice ,kindly share me photos like below 		format because it includes metadata.
+	
+	Diagram:
+
+step7:
+------
+	Install apache Web server.
+	ex:
+		$ sudo yum install httpd -y 
+		
+step8:
+-----
+	Enable the service.
+	ex:
+		$ sudo systemctl enable httpd 
+
+step9:
+------	
+	Start the service.
+	ex:
+		$ sudo systemctl start httpd 
+
+step10:
+------
+	Check the service running or not.
+	ex:
+		$ sudo systemctl status httpd
+
+step11:
+-------
+	Check list of port numbers are available on the system.
+	In which port number that service is running.
+	ex:
+		$ sudo netstat -tulpn 
+
+	Diagram: 
+
+step12:
+-------
+	Lets check our connection giving me response or not.
+	First copy and public IP address and paste it on the browser address bar.
+	ex:
+		44.201.209.155:80
+		or
+		44.201.209.155
+
+	Diagram: 	
+
+	Note: I don't need default response. I need nice the good response which is
+	designed by a frontend developer team.
+
+step13:
+------
+	We will keep the website content in below directory.
+	ex:
+		$ cd /var/www/html/
+		$ ls -ltr 
+
+		total 0 - (output)
+
+	Diagram: 
+
+step14:
+------
+	Now download the file which is given by frontend developer.	
+	ex:
+
+	$ wget https://learndevopswithaws.s3.ap-south-1.amazonaws.com/index.html
+
+	or
+
+	$ sudo wget https://learndevopswithaws.s3.ap-south-1.amazonaws.com/index.html
+
+	$ ls -ltr 
+
+step15:
+-------
+	Whenever you download anything inside the html directory or 
+	whenever you do any changes inside system files , 
+	we need to restart the service.
+	ex:
+		$ sudo systemctl restart httpd
+ 
+		$ sudo systemctl status httpd 		
+
+step16:
+-----
+	Refresh the browser address bar to see new output.
+	
+	Diagram: 
+
+step17:
+-------
+	Now click to hyperlink i.e "Enter to Register".
+
+	Note: Page Not Found.
+
+	If someone given the request to application it goes to frontend and 
+	once the user click for register , request will forward to backend server.
+	For safety concern we need to do this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+	
