@@ -1,0 +1,165 @@
+JDBC Application To interact with AWS MySQL Database
+====================================================
+step1:
+------
+	Connect to AWS account.
+
+step2:
+------
+	Select the region as US East (N. Virginia).
+
+step3:
+------
+	Goto services option and click to database i.e RDS.
+
+step4:
+-----
+	Click to create database button and do the configuration for MySQL DB.	
+
+
+step5:
+-----
+	Click to DB Identifier name to get the endpoint of MySQL DB.
+
+step6:
+-----
+	Now launch MySQL workbench and create a connection.
+
+step7:
+------
+	create schema in workbench.
+	ex:
+		create schema ihubdb;
+
+step8:
+------
+	Use the schema.
+	ex:
+		use ihubdb;
+
+step9:
+------
+	Create a table student table and insert the records.
+	ex:
+		create table student(sid int(3),sname varchar(10),sadd varchar(12));
+		insert into student values(101,'raja','hyd');
+		insert into student values(102,'ravi','delhi');
+		insert into student values(103,'ramana','vizag');
+		commit;
+
+step10:
+------
+	Launch eclipse IDE.
+
+
+step11:
+------
+	Create a java project i.e AWS-JDBC.
+
+step12
+------
+	Create a DBConnection.java file inside "com.ihub.www" package.
+	
+DBConnection.java
+-----------------
+package com.ihub.www;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection 
+{
+	static Connection con=null;
+	
+	public static  Connection getConnection()
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			con=DriverManager.getConnection("jdbc:mysql://mydb.cxjasnejkd9q.us-east-1.rds.amazonaws.com:3306/ihubdb?characterEncoding=utf8","admin","adminadmin");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return con;
+	}
+}
+
+
+step13:
+-------
+	Create a  SelectApp.java file inside "com.ihub.www" package.
+
+SelectApp.java
+--------------
+package com.ihub.www;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class SelectApp 
+{
+	public static void main(String[] args)throws Exception  
+	{
+		Connection con=DBConnection.getConnection();
+		Statement st=con.createStatement();
+		String qry="select * from student";
+		ResultSet rs=st.executeQuery(qry);
+		while(rs.next())
+		{
+			System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+		}
+		rs.close();
+		st.close();
+		con.close();
+	}
+}
+
+step14:
+-------
+	Run the JDBC Application and see the output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,19 @@
+<center>
+	<h1>Ihub Talent Management</h1>
+	<br>
+	<form method="POST">
+		<table>
+			<tr>
+				<td>UserName:</td>
+				<td><input type="text" name="uname"/></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" name="upwd"/></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="uname"/></td>
+			</tr>
+		</table>
+	</form>
+</center>

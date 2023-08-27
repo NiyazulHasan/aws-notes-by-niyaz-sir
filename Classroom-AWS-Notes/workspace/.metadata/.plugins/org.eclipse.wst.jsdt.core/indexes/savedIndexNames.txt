@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+E:\Classroom-AWS-Notes\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1917100541.index
+1659846650.index
+2203274743.index
+3949094262.index
+6936322.index
+1074006738.index

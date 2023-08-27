@@ -1,0 +1,17 @@
+package com.ihub.www;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+
+public class LoginSrv extends HttpServlet
+{
+	protected void doPost()throws ServletException,IOException
+	{
+		PrintWriter pw=res.getWriter();
+		res.setContentType("text/html");
+		
+		
+	}
+}

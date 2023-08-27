@@ -117,9 +117,9 @@ step12:
 	Lets check our connection giving me response or not.
 	First copy and public IP address and paste it on the browser address bar.
 	ex:
-		44.201.209.155:80
+		3.94.179.191:80
 		or
-		44.201.209.155
+		3.94.179.191
 
 	Diagram: 	
 
@@ -175,6 +175,373 @@ step17:
 	If someone given the request to application it goes to frontend and 
 	once the user click for register , request will forward to backend server.
 	For safety concern we need to do this.
+
+-----------------------------------------------------------------------------------
+
+step18:
+-------
+	Now Connect to the BackEnd server using Xshell.
+
+	Diagram:
+
+step19:
+-------
+	Enter the password to connection backend server.
+	ex:
+		
+		password : DevOps321
+
+step20:
+------
+	Set the hostname to backend server.
+	ex:
+		$ sudo set-hostname backend
+
+step21:
+-------
+	Check the machine is up or not.
+	ex:
+		$ uptime 
+
+
+Who will configure the application ?
+====================================
+> Suppose Chayya has configure the application.
+
+> Then, all the files and ownership will be under her name.
+
+> What will happen when she leave the organization.
+
+> They will terminate the user account.
+
+> The whole application which was owned by the owner Chayya, will stop working.
+
+> In order to mitigate that, we will create a service account and all the 
+  application configuration will be done using that service account.
+  (# sudo su - service Account i.e to switch to account)
+  
+
+step22:
+------
+	Create a user account on backend server.
+	ex:
+		$ sudo useradd student
+
+step23:
+------
+	Check student account is exist or not.
+	ex:
+		$ id student 
+
+step24:
+------
+	Install java software for the application.
+	ex:
+		$ sudo yum install java -y 
+
+step25:
+------
+	To check java is installed or not.
+	ex:
+		$ type java
+
+step26:
+------
+	Check the version of java.
+	ex:
+		$ java -version 
+
+step27:
+-------
+	Now switch to student account.
+	ex:
+		$ sudo su - student
+
+step28:
+-------
+	Check we connect to proper user or not.
+	ex:
+		$ whoami 
+
+step29:
+-------
+	Now install apache tomcat server.
+	ex:
+		$ wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz --no-check-certificate
+
+		$ ls -ltr
+	
+	Diagram: 
+
+step30:
+--------
+	Extract the file.
+	ex:
+		
+		$ tar -xf apache-tomcat-9.0.78.tar.gz
+
+		$ ls -ltr 
+
+step31:
+-------
+	Let see the structure of apache server.
+	ex:
+		$ cd apache-tomcat-9.0.78
+		$ ls -ltr 
+
+	Note: 
+	All the application which we are going to run will be placed in 
+	a directory called webapps.	
+
+	All the logs related to application will resides to logs directory.
+		
+	All configuration information related to apache tomcat server will resides 
+	in config directory.
+
+	All the additional softwares and libraries will store in lib directory.
+
+step32:
+------
+	Install Student admission application  inside "webapps" directory.
+	ex:
+		$ cd webapps/
+
+		$ wget https://learndevopswithaws.s3.ap-south-1.amazonaws.com/student.war
+
+		$ cd .. 
+
+step33:
+-------
+	Now start the apache tomcat from "bin" directory.
+	ex:
+		$ cd bin/ 
+		$ ls -ltr 
+		$ ./startup.sh  (It is used to run the script)
+
+		  Here . is a current directory.
+		
+
+step34:
+------
+	To check apache tomcat server started or not we will use below commands.
+	ex:
+		$ cd .. 
+		$ ls -ltr 
+		$ cd logs/
+		$ ls -ltr  
+
+step35:
+------
+	Now stream the logs.
+	ex:
+		$ tail -f catalina.out 	
+
+step36:
+------
+	To check the port number of tomcat.
+	ex:
+		$ netstat -tulpn 
+	
+		o/p: tcp6 0 0 :::8080   :::*  LISTEN  12347/java 
+
+step37:
+------
+	Now Access the backend application by copying public IP address of 
+	backend server and paste in browser address bar.
+	ex:
+		54.167.238.165:8080/student 
+
+	Diagram: 
+
+
+	Note:
+	------
+	If you don't want to expose my backend IP address.
+	
+	If you don't want to expose my backend port address.
+	
+	Only frontend ip address has to be exposed and all the business should 
+        happen over fontend layer only.
+
+	In order to achieve this we need to understand proxy vs ReverseProxy.
+		
+	
+proxy:
+------
+	gmail.com
+	twitter.com
+	facebook.com   -----> Your network administrator has restrict this page.
+	instagram.com
+
+
+	Diagram: proxyvsreverseproxy  
+
+
+step38:
+-------
+	We need to configure reverseproxy to backend server.
+
+	All web servers has the capability of reverse proxy.
+
+	ex
+		We are doing from root user.
+
+		$ cd ~/
+		$ exit 
+		$ exit (we are now in root user)
+		$ cd /etc/httpd/conf (All configuration settings we can see here)
+		$ cd /etc/httpd/conf.d/ 
+		$ ls -ltr 
+		$ sudo vim proxy.conf (create a proxy file)
+
+	ProxyPass "/student" "http://172.31.93.85:8080/student"
+	ProxyPassReverse "/student"  "http://172.31.93.85:8080/student"
+
+		:wql!  (Press ESC : wq! (save and quit))
+
+		
+	Here 172.31.93.85 is a private IP address of backend server.	
+
+step39:
+------
+	Whenever we have edited anything inside etc and it is related to
+	any service you must ensure to do daemon reload.
+	ex:
+		$ sudo systemctl daemon-reload
+
+step40:
+------
+	Now restart your frontend and check the status.
+	ex:
+		$ sudo systemctl restart httpd 	
+		$ sudo systemctl status httpd 	
+
+step41:
+------
+	Give the request to frontend application and click to register link.
+	ex:
+		http://3.94.179.191/	
+ 
+
+
+	
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,61 @@
+How to run web application in AWS tomcat server
+================================================
+step1:
+------
+	Launche eclipse IDE by choosing work space location.
+
+step2:
+-----
+	Add Tomcat server to Eclipse IDE.
+
+step3:
+-----
+	Create a dynamic web project in eclipse IDE.
+
+step4:
+-------
+	Test the dynamic web project working in our local machine or not.
+
+step5:
+------
+	Convert dynamic web project to war file to deploy in aws.
+
+step6:
+------
+	Login AWS account and choose elastic Beanstack service.
+
+step7:
+------
+	Create a  beanstack service application.
+
+step8:
+------
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

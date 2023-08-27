@@ -1,0 +1,9 @@
+package com.ihub.www;
+
+public class LoginSrv extends HttpServlet
+{
+	protected void doPost()throws ServletException,IOException
+	{
+		
+	}
+}
